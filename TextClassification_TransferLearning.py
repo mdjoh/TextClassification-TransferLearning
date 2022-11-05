@@ -130,14 +130,14 @@ def build_model(base_model, trainable=False, params={}):
 
     cls_token = dbert_last_hidden_state[:, 0, :] # first token passed into the model; cls_token corresponds to first element of DistilBert sequence and is used to build the sentence classifier network
 
-    my_output = keras.layers.BatchNormalization()(cls_token)
-    my_output = Dense(256, activation='relu')(my_output)
-    my_output = Dropout(rate=params.get('dropout_rate'), seed=42)(my_output)
-    my_output = Dense(128, activation='relu')(my_output)
-    my_output = Dropout(rate=params.get('dropout_rate'), seed=42)(my_output)
-    probs = Dense(1, activation='sigmoid')(my_output)
+     = keras.layers.BatchNormalization()(cls_token)
+    network_output = Dense(256, activation='relu')(network_output)
+    network_output = Dropout(rate=params.get('dropout_rate'), seed=42)(network_output)
+    network_output = Dense(128, activation='relu')(network_output)
+    network_output = Dropout(rate=params.get('dropout_rate'), seed=42)(network_output)
+    probabilities = Dense(1, activation='sigmoid')(network_output)
 
-    model = keras.Model(inputs=[inputs, masks], outputs=probs)
+    model = keras.Model(inputs=[inputs, masks], outputs=probabilities)
     model.summary()
 
     return model
