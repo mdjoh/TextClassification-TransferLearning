@@ -29,10 +29,10 @@ Apply transfer learning on DistilBert language model to classify text
 | dropout_20 (Dropout) | (None, 128) | 0 | ['dense_1[0][0]']
 | dense_2 (Dense) | (None, 1) | 129 | ['dropout_20[0][0]']
 
-==================================================================================
-**Total parameters**: 66,595,841\
-**Trainable parameters**: 231,425\
-**Non-trainable parameters**: 66,364,416
+===========================================================================
+**Total Parameters**: 66,595,841\
+**Trainable Parameters**: 231,425\
+**Non-trainable Parameters**: 66,364,416
 
 ## Training Results
 Due to the class imbalance in the dataset (approximately 2.5 times more sentences labeled as 1 versus 0), precision-recall AUC is the model evaluation metric of choice.
